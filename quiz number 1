@@ -1,0 +1,17 @@
+PART 2
+1a. What are the parent and child classes here?
+The Spell is the parent and the Accio and Confundo is the child
+1b. What does the code print out? (Try figuring it out without running it in Python)
+spell.execute() will print "Summoning Charm"
+study_spell(spell) will print "Accio Summoning Charm\n No description"
+study_spell(Confundo()) will print "Confundo Confundus Charm\nCauses the victim to become confused and befuddled."
+1c. Which get description method is called when ‘study spell(Confundo())’ is executed? Why?
+study_spell(Confundo()) going to call Confundo.get_description because the parent's function is in the Confundo class
+1d. What do we need to do so that print(Accio()) will print the appropriate description (This charm summons an object to the caster, potentially over a significant distance)?
+Override the the parent's get_description function and create inside the Accio class:
+    class Accio(Spell):
+        def __init__(self):
+            Spell.__init__(self, "Accio", "Summoning Charm")
+
+        def get_description(self):
+            return "This charm summons an object to the caster, potentially over a significant distance."
